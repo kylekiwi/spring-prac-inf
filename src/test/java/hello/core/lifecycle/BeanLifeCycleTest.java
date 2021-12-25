@@ -16,7 +16,9 @@ public class BeanLifeCycleTest {
 
   @Configuration
   static class LifeCycleConfig {
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "close")
+    // or, destroyMethod can be skipped (by 'inferred')
+//    @Bean(initMethod = "init")
     public NetworkClient networkClient() {
       NetworkClient myNet = new NetworkClient();
       myNet.setUrl("http://fjdkajfkds.com");
