@@ -16,7 +16,7 @@ public class BeanLifeCycleTest {
 
   @Configuration
   static class LifeCycleConfig {
-    @Bean(initMethod = "init", destroyMethod = "close")
+    @Bean
     // or, destroyMethod can be skipped (by 'inferred')
 //    @Bean(initMethod = "init")
     public NetworkClient networkClient() {
