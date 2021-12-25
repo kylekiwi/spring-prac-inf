@@ -18,9 +18,9 @@ public class BeanLifeCycleTest {
   static class LifeCycleConfig {
     @Bean
     public NetworkClient networkClient() {
-      NetworkClient networkClient = new NetworkClient();
-      networkClient.setUrl("http://fjdkajfkds.com");
-      return networkClient;
+      NetworkClient myNet = new NetworkClient();
+      myNet.setUrl("http://fjdkajfkds.com");
+      return myNet;
     }
   }
 
