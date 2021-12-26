@@ -13,14 +13,17 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 public class LogDemoController {
   private final LogDemoService logDemoService;
-  private final ObjectProvider<MyLogger> myLoggerProvider;
+  private final MyLogger myLogger;
 
   @RequestMapping("log-demo")
   @ResponseBody
   public String logDemo(HttpServletRequest request) {
-    MyLogger myLogger = myLoggerProvider.getObject();
     String reqURL = request.getRequestURL().toString();
-    myLogger.setReqURL(reqURL);
+
+    System.out.println("myLogger = " + myLogger.getClass());
+
+
+    myLogger.setReqURL(reqURL); // 이 때 진짜 myLogger클래스를 찾아서 동작해(provider 사용했을 때 처럼)
     myLogger.log("controller test");
     logDemoService.logic("testId");
     return "OK";
